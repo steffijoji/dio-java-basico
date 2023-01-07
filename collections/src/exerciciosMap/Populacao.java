@@ -28,11 +28,11 @@ public class Populacao {
     public static void main(String[] args) {
 
         System.out.println("1. Crie um dicionário e relacione os estados e suas populações");
-        Map<String, Integer> populacao = new HashMap<>() {{
+        Map<String, Integer> populacao = new HashMap<>() {{ //9.616.621 - 3.351.543 - 9.187.103 - 3.534.265
             put("PE", 9616621);
             put("AL", 3351543);
             put("CE", 9187103);
-            put("RN", 3534264);
+            put("RN", 3534265);
         }};
         System.out.println(populacao);
 
@@ -46,18 +46,18 @@ public class Populacao {
         } else {
             populacao.put("PB", 4039277);
         }
-        ;
+
         System.out.println(populacao);
 
         System.out.println("4. Exiba a população PE");
         System.out.println(populacao.get("PE"));
 
         System.out.println("5. Exiba todos os estados e suas populações na ordem que foi informado");
-        Map<String, Integer> populacao2 = new LinkedHashMap<>() {{
+        Map<String, Integer> populacao2 = new LinkedHashMap<>() {{ //9.616.621 - 3.351.543 - 9.187.103 - 3.534.165
             put("PE", 9616621);
             put("AL", 3351543);
             put("CE", 9187103);
-            put("RN", 3534264);
+            put("RN", 3534165);
         }};
         System.out.println(populacao2);
 
@@ -87,6 +87,29 @@ public class Populacao {
         System.out.println(estadoMaiorPopulacao + " - " + maiorPopulacao);
 
         System.out.println("9. Exiba a soma da população desses estados");
+        Iterator<Integer> iterator = populacao2.values().iterator();
+        Integer soma = 0;
+        while (iterator.hasNext()) {
+            soma += iterator.next();
+        }
+        System.out.println(soma); //25.689.432
 
+        System.out.println("10. Exiba a média da população deste dicionário de estados"); //6.422.358
+        System.out.println(soma/populacao2.size());
+
+        System.out.println("11. Remova os estados com a população menor que 4.000.000");
+        Iterator<Integer> iterator1 = populacao2.values().iterator();
+        while (iterator1.hasNext()) {
+            if (iterator1.next() < 4000000) {
+                iterator1.remove();
+            }
+        }
+        System.out.println(populacao2);
+
+        System.out.println("12. Apague o dicionário de estados");
+        populacao2.clear();
+
+        System.out.println("13. Confira se o dicionário está vazio");
+        System.out.println(populacao2.isEmpty());
     }
 }
